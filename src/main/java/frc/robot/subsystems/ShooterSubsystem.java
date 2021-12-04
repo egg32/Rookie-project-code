@@ -8,6 +8,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
@@ -20,13 +21,15 @@ public class ShooterSubsystem extends SubsystemBase {
 
   /** Creates a new ShooterSubsystem. */
   public ShooterSubsystem() {
-    motor = new TalonSRX(22);
+    motor = new TalonSRX(1);
     breakbeam = new DigitalInput(0);
 
     startTime = Timer.getFPGATimestamp();
     ballInSystem = false;
 
     motor.configFactoryDefault();
+
+    // motor.setInverted(true);
   }
 
   public void runMotors(double output) {
@@ -35,20 +38,24 @@ public class ShooterSubsystem extends SubsystemBase {
 
   @Override
   public void periodic() { 
-    if(!breakbeam.get()) {
-      ballInSystem = true;
+    // SmartDashboard.putBoolean("bb", breakbeam.get());
+    
+    // if(!breakbeam.get()) {
+    //   ballInSystem = true;
 
-      runMotors(0.3);
-    }
+    //   runMotors(0.3);
+    // }
       
-    if(!ballInSystem)
-      startTime = Timer.getFPGATimestamp();
+    // if(!ballInSystem)
+    //   startTime = Timer.getFPGATimestamp();
 
-    if(Timer.getFPGATimestamp() - startTime >= 3) {
-      ballInSystem = false;
+    // if(Timer.getFPGATimestamp() - startTime >= 3) {
+    //   ballInSystem = false;
 
-      runMotors(0);
-    }
+    //   runMotors(0);
+    // }
+
+    runMotors(0.2);
   }
 
   public DigitalInput getBreakbeam() {
