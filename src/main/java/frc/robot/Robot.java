@@ -17,7 +17,10 @@ import frc.robot.subsystems.ShooterSubsystem;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+<<<<<<< HEAD
   public ShooterSubsystem shooter;
+=======
+>>>>>>> master
   private RobotContainer m_robotContainer;
 
   /**
@@ -29,7 +32,10 @@ public class Robot extends TimedRobot {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
+<<<<<<< HEAD
     shooter = new ShooterSubsystem(motor, breakbeam);
+=======
+>>>>>>> master
   }
 
   /**

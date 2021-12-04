@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.commands.RunMotor;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Subsystem;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -27,16 +27,14 @@ public class RobotContainer {
 
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
 
-  public TalonSRX motor;
-  public DigitalInput breakbeam;
-  public RunMotor motorRun;
+  private ShooterSubsystem shooter;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  public RobotContainer() {    
+   
+    shooter = new ShooterSubsystem();
+
     configureButtonBindings();
-    motor = new TalonSRX(22);
-    breakbeam = new DigitalInput(0);
-    motorRun = new RunMotor(motor, breakbeam);
   }
 
   /**
